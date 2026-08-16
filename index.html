@@ -204,14 +204,14 @@ textarea{resize:vertical;min-height:80px}
    KONFIGURASI
    ============================================================ */
 const CONFIG = {
-  BASE_URL : "https://pausbiru7.github.io/safety-starts-with-me/",
+  BASE_URL : "https://pausbirusumbawa.github.io/safety-starts-with-me/",
   GAS_URL  : "https://script.google.com/macros/s/AKfycbwKbzHUhIRyIxBZ7jET0qf50fSxuANU1nsyFDs0zbM4sTUSyyvjiJIhLrapys13GK8-/exec",
   HSE_WA   : "6285814064464"
 };
 
 const SUPERVISORS = [
   { name:"Suparman",      title:"Superintendent",       wa:"6281327521141",  dept:"Electrical"   },
-  { name:"Didit H",   title:"ESenior Project Adm", wa:"62895613918907", dept:"Project"},
+  { name:"Didit H",   title:"Senior Project Adm", wa:"62895613918907", dept:"Project"},
   { name:"Diman S",    title:"Electrical Supervisor", wa:"6281222293724", dept:"Electrical"},
    { name:"Cecep S", title:"QA/QC Supervisor",         wa:"6285814064464", dept:"Quality"   }
 ];
@@ -554,18 +554,16 @@ function renderStep1(){
     <select id="posisi" onchange="togglePosisiLainnya(); autoSaveDraft()">
       <option value="">-- Pilih Posisi / Jabatan --</option>
       ${[
-        "CREW",
-        "ELECTRICIAN",
-        "PLUMBER",
-        "LH ELECTRIC",
-        "FOREMAN ELECTRIC",
-        "LH MECHANICAL",
-        "FOREMAN MECHANICAL",
-        "DRIVER/OPERATOR",
-        "HSE",
-        "QA/QC",
-        "SUPERVISOR ELECTRIC",
-        "SUPERVISOR MECHANICAL",
+        "SENIOR ADMINISTRATOR",
+            "ADMINISTRATIVE OFFICER",
+"SUPERVISOR ELECTRIC",
+            "FITTER",
+            "ELECTRICIAN",
+            "FOREMAN ELECTRICIAN",
+            "FOREMAN MECHANICAL",
+            "DRIVER/OPERATOR",
+            "STOREMAN",
+            "QA/QC",
         "LAINNYA"
       ].map(v => {
         const selected = (
