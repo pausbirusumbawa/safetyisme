@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAUSBIRU SAFETY</title>
+<meta name="theme-color" content="#1a5276">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Tahoma,sans-serif;background:#f0f4f8;min-height:100vh;padding:12px;line-height:1.5}
+.container{max-width:600px;margin:0 auto;background:#fff;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,.12);overflow:hidden}
+.header {
+      background: linear-gradient(135deg, #1a5276 0%, #2e86c1 100%);
+      color: #fff;
+      padding: 32px 24px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;       
+      justify-content: center;   
+      text-align: center;        
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #f59e0b, #10b981, #ef4444, #8b5cf6);
+    }
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: .5px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+      text-align: center;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .header p {
+      font-size: .85rem;
+      opacity: .9;
+      margin-top: 6px;
+      text-align: center;
+      width: 100%;
+    }
+    .badge {
+      display: inline-flex;       
+      align-items: center;
+      justify-content: center;
+      background: #f59e0b;
+      color: #fff;
+      font-size: .7rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-top: 12px;
+      font-weight: 700;
+      animation: pulse 2s infinite;
+      text-align: center;
+    }
+      @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.section{padding:24px;border-bottom:1px solid #f1f5f9}
+.section:last-child{border-bottom:none}
+.section-title{font-size:1.1rem;font-weight:800;color:#1a5276;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.icon{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.icon-blue{background:#dbeafe;color:#2563eb}
+.icon-red{background:#fee2e2;color:#dc2626}
+.icon-green{background:#d1fae5;color:#059669}
+.icon-orange{background:#ffedd5;color:#ea580c}
+.icon-purple{background:#ede9fe;color:#7c3aed}
+label{display:block;font-size:.88rem;color:#374151;margin-bottom:6px;font-weight:600}
+input,textarea,select{width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:.92rem;margin-bottom:16px;transition:all .2s;font-family:inherit;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+input:focus,textarea:focus,select:focus{outline:none;border-color:#2e86c1;box-shadow:0 0 0 4px rgba(46,134,193,.15)}
+textarea{resize:vertical;min-height:80px}
+.row{display:flex;gap:12px}.row>div{flex:1}
+.check-group{margin-bottom:16px}
+.check-item{display:flex;align-items:center;gap:12px;padding:14px 16px;border:2px solid #f3f4f6;border-radius:12px;margin-bottom:8px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.check-item::before{content:'';position:absolute;left:0;top:0;height:100%;width:4px;transform:scaleY(0);transition:transform .2s}
+.check-item:hover{border-color:#2e86c1;background:#f0f7ff;transform:translateX(2px)}
+.check-item.sel-g::before{transform:scaleY(1);background:#059669}
+.check-item.sel-b::before{transform:scaleY(1);background:#dc2626}
+.check-item input[type="radio"],.check-item input[type="checkbox"]{accent-color:#2e86c1;width:18px;height:18px;margin:0;flex-shrink:0}
+.check-item label{margin:0;cursor:pointer;font-weight:600;color:#1f2937;flex:1}
+.hazard-card{background:#f8fafc;border:2px solid #e2e8f0;border-radius:14px;padding:18px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.hazard-card .hazard-title{font-weight:800;color:#1a5276;margin-bottom:10px;font-size:1rem}
+.hazard-check{display:flex;align-items:flex-start;gap:10px;padding:10px;font-size:.88rem;color:#374151;cursor:pointer;border-radius:8px;transition:all .2s}
+.hazard-check:hover{background:#f1f5f9}
+.hazard-check input[type="checkbox"]{accent-color:#e74c3c;width:18px;height:18px;margin-top:2px;flex-shrink:0}
+.control-box{background:#fffbeb;border:2px solid #f59e0b;border-radius:10px;padding:14px;margin:6px 0 12px 40px;animation:slideIn .3s ease-out}
+.control-box label{color:#92400e;font-size:.85rem;font-weight:800;margin-bottom:6px}
+.control-box textarea{font-size:.85rem;border-color:#f59e0b;margin-bottom:0}
+.control-box textarea:focus{border-color:#d97706;box-shadow:0 0 0 3px rgba(245,158,11,.2)}
+@keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+.custom-hazard-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.custom-hazard-row input[type="text"]{margin-bottom:0;flex:1}
+.add-btn{background:linear-gradient(135deg,#7c3aed,#8b5cf6);color:#fff;border:none;border-radius:10px;padding:10px 16px;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;box-shadow:0 2px 8px rgba(124,58,237,.3)}
+.add-btn:hover{background:linear-gradient(135deg,#6d28d9,#7c3aed);transform:translateY(-1px)}
+.remove-btn{background:#ef4444;color:#fff;border:none;border-radius:8px;padding:6px 10px;font-size:.8rem;cursor:pointer;font-weight:600}
+.remove-btn:hover{background:#dc2626}
+.btn{width:100%;padding:16px;border:none;border-radius:14px;font-size:1rem;font-weight:800;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:linear-gradient(135deg,#1a5276,#2e86c1);color:#fff}
+.btn-wa{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff}
+.btn-approve{background:linear-gradient(135deg,#059669,#10b981);color:#fff}
+.btn-reject{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff}
+.btn-back{background:#f3f4f6;color:#6b7280;border:2px solid #e5e7eb}
+.step{display:none}.step.active{display:block;animation:fadeInUp .4s ease-out}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.dots{display:flex;justify-content:center;gap:8px;padding:20px;background:#f8fafc}
+.dot{width:12px;height:12px;border-radius:50%;background:#d1d5db;transition:all .3s ease}
+.dot.active{background:#2e86c1;width:32px;border-radius:16px;box-shadow:0 0 0 4px rgba(46,134,193,.3)}
+.sbox{background:#f8fafc;border-radius:14px;padding:20px;font-size:.86rem;line-height:1.8;border-left:4px solid #2e86c1;margin:16px 0}
+.sbox hr{border:none;border-top:1px dashed #d1d5db;margin:12px 0}
+.sv-banner{text-align:center;padding:28px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;margin:-24px -24px 20px;border-radius:0 0 16px 16px}
+.sv-banner h2{margin:12px 0 8px;font-size:1.4rem;font-weight:900}
+.result-card{text-align:center;padding:40px 24px}
+.result-card .big{font-size:5rem;margin-bottom:16px;line-height:1}
+.sent-info{background:#dbeafe;border-radius:12px;padding:16px;margin-top:16px;font-size:.85rem;color:#1e40af;border-left:4px solid #2563eb}
+.sent-info.approved{background:#d1fae5;color:#065f46;border-left-color:#059669}
+.sent-info.rejected{background:#fee2e2;color:#991b1b;border-left-color:#dc2626}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9998;align-items:center;justify-content:center}
+.overlay.show{display:flex}
+.progress-box{background:#fff;border-radius:20px;padding:32px 28px;text-align:center;max-width:320px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.progress-box .spinner{width:48px;height:48px;border:4px solid #e5e7eb;border-top-color:#2e86c1;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.footer{padding:20px;text-align:center;font-size:.78rem;color:#9ca3af;border-top:1px solid #f1f5f9}
+@media(max-width:480px){.container{margin:0;border-radius:0}.header{padding:20px 16px}.section{padding:16px}}
+
+/* --- TAMBAHAN UPGRADE CSS: TANDA TANGAN, FOTO, GPS --- */
+.sig-container { border: 2px dashed #cbd5e1; border-radius: 12px; background: #fff; overflow: hidden; position: relative; margin-bottom: 8px; }
+.sig-pad { width: 100%; height: 180px; touch-action: none; display: block; }
+.clear-sig { background: #f1f5f9; color: #dc2626; border: 1px solid #e2e8f0; border-radius: 8px; padding: 6px 12px; font-size: .8rem; font-weight: bold; cursor: pointer; display:block; margin-bottom:10px; }
+.photo-box { border: 2px dashed #cbd5e1; border-radius: 12px; background: #f8fafc; padding: 20px; text-align: center; margin-bottom: 15px; }
+#fotoPreview { display: none; width: 100%; max-height: 350px; object-fit: contain; border-radius: 8px; margin-top: 10px; border: 2px solid #e2e8f0; }
+.sbox img { max-width: 100%; height: auto; object-fit: contain; border-radius: 8px; }.gps-box { background: #e0f2fe; color: #0369a1; padding: 12px; border-radius: 10px; font-size: 0.85rem; margin-top: 10px; display: flex; align-items: center; gap: 8px; font-weight: 600; }
+/* =========================================
+   CSS KHUSUS UNTUK PRINT / EXPORT PDF
+   ========================================= */
+.print-only { display: none; } /* Sembunyikan dari layar HP/Laptop */
+
+@media print {
+  @page { margin: 15mm; } /* Memberikan margin (bingkai) kertas putih yang rapi */
+  body { background: #fff !important; padding: 0 !important; font-size: 12px; color: #000; }
+  .container { box-shadow: none !important; max-width: 100% !important; border-radius: 0 !important; margin: 0 !important; }
+  .header, .footer, .btn, .sent-info, .result-card, #notifHint { display: none !important; }
+  
+  .sbox { border: 1px solid #000 !important; padding: 20px !important; margin: 0 !important; border-radius: 0 !important; page-break-inside: avoid; }
+  img { max-width: 100% !important; page-break-inside: avoid; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+  /* 🚀 MUNCULKAN HEADER & FOOTER KHUSUS PRINT */
+  .print-only { display: flex !important; width: 100%; justify-content: space-between; align-items: flex-end; }
+  
+  /* Desain Kop Surat (Header) */
+  #printHeader { border-bottom: 2px solid #1a5276; padding-bottom: 12px; margin-bottom: 20px; }
+  #printHeader h2 { margin: 0; font-size: 1.5rem; color: #1a5276; }
+  #printHeader p { margin: 0; font-size: 0.85rem; color: #555; }
+  
+  /* Desain Footer Bawah */
+  #printFooter { border-top: 1px solid #ccc; padding-top: 8px; margin-top: 30px; font-size: 0.8rem; color: #666; font-weight: bold; }
+}
+</style>
+</head>
+<body>
+<div class="container" id="app">
+
+  <div class="header">
+    <h1>⛑️ PAUSBIRU SAFETY</h1>
+    <p>Daily Pre-Work Safety Checklist v3.8</p>
+    <div class="badge" id="dateDisplay">Loading...</div>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="progress-box">
+      <div class="spinner"></div>
+      <p id="progressMsg">Memproses...</p>
+      <small id="progressSub">Mohon tunggu sebentar</small>
+    </div>
+  </div>
+
+  <div id="WM">
+    <div class="dots" id="dots"></div>
+    <div class="section step active" id="step1"></div>
+    <div class="section step" id="step2"></div>
+    <div class="section step" id="step3"></div>
+    <div class="section step" id="step4"></div>
+    <div class="section step" id="step5"></div>
+    <div class="section step" id="step6"></div>
+  </div>
+
+  <div id="SM" style="display:none"></div>
+  <div id="SD" style="display:none"></div>
+
+  <div class="footer">
+    Safety Starts With Me © 2026 | v3.8<br>
+    <small>Powered by Pausbiru7</small>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   KONFIGURASI
+   ============================================================ */
+const CONFIG = {
+  BASE_URL : "https://pausbiru7.github.io/safety-starts-with-me/",
+  GAS_URL  : "https://script.google.com/macros/s/AKfycbwKbzHUhIRyIxBZ7jET0qf50fSxuANU1nsyFDs0zbM4sTUSyyvjiJIhLrapys13GK8-/exec",
+  HSE_WA   : "6285814064464"
+};
+
+const SUPERVISORS = [
+  { name:"Suparman",      title:"Superintendent",       wa:"6281327521141",  dept:"Electrical"   },
+  { name:"Didit H",   title:"ESenior Project Adm", wa:"62895613918907", dept:"Project"},
+  { name:"Diman S",    title:"Electrical Supervisor", wa:"6281222293724", dept:"Electrical"},
+   { name:"Cecep S", title:"QA/QC Supervisor",         wa:"6285814064464", dept:"Quality"   }
+];
+
+const HZDATA = [
+  { id: 'mek', n: '⚙️ Bahaya Mekanik', items: ['Terjepit mesin', 'Terpotong benda tajam', 'Tertimpa material', 'Terbentur benda keras'] },
+  { id: 'kat', n: '🧗 Bahaya Ketinggian (Working at Height)', items: ['Terjatuh dari ketinggian / perancah (scaffolding)', 'Material / perkakas terjatuh dari atas', 'Kegagalan alat pelindung jatuh (Full Body Harness)'] },
+  { id: 'drv', n: '🚜 Bahaya Alat Berat, Kendaraan & Mobilitas', items: ['Tabrakan / senggolan dengan unit lain', 'Kecelakaan akibat blind spot', 'Kegagalan fungsi rem / kemudi / hidrolik', 'Ambles atau terperosok di jalan proyek'] },
+  { id: 'lis', n: '⚡ Bahaya Listrik', items: ['Tersengat listrik', 'Korsleting / arus pendek', 'Kabel terkelupas', 'Panel listrik rusak'] },
+  { id: 'kim', n: '🧪 Bahaya Kimia', items: ['Terhirup gas / uap / debu berbahaya', 'Terkena cipratan cairan kimia', 'Iritasi kulit / mata', 'Keracunan'] },
+  { id: 'ruf', n: '🕳️ Bahaya Ruang Terbatas (Confined Space)', items: ['Kekurangan oksigen / gas beracun', 'Kesulitan evakuasi darurat di area sempit'] },
+  { id: 'hot', n: '🔥 Bahaya Pekerjaan Panas (Hot Work)', items: ['Percikan api las / gerinda mengenai bahan mudah terbakar', 'Risiko kebakaran atau ledakan', 'Paparan radiasi sinar las'] },
+  { id: 'erg', n: '🪑 Bahaya Ergonomi', items: ['Posisi kerja tidak ergonomis', 'Angkat beban berlebihan', 'Gerakan berulang', 'Pencahayaan buruk'] },
+  { id: 'fis', n: '🌡️ Bahaya Fisik & Lingkungan', items: ['Kebisingan tinggi', 'Suhu / cuaca ekstrem', 'Getaran berlebih', 'Kurangnya jarak pandang'] },
+  { id: 'bio', n: '🦠 Bahaya Biologis', items: ['Paparan bakteri / virus', 'Gigitan serangga / hewan berbisa', 'Paparan jamur'] },
+  { id: 'env', n: '🌱 Bahaya Lingkungan & Pengelolaan Limbah', items: ['Potensi tumpahan oli / bahan kimia ke tanah', 'Paparan debu berlebih'] },
+  { id: 'psi', n: '🧠 Bahaya Psikososial', items: ['Tekanan kerja tinggi / deadline', 'Konflik antar rekan kerja', 'Kelelahan mental'] }
+];
+
+const CTDATA = [
+  'Helm Safety', 
+  'Kacamata Safety', 
+  'Sarung Tangan', 
+  'Sepatu Safety', 
+  'Masker/Respirator', 
+  'Ear Plug/Muff', 
+  'Full Body Harness & Lanyard', 
+  'Rompi Safety', 
+  'Face Shield', 
+  'Chemical Cartridge Respirator', 
+  'APD Kimia / Apron', 
+  'Lainnya'
+];
+
+/* ============================================================
+   LZ COMPRESS — URL SHARING
+   ============================================================ */
+const LZ = {
+  compress(s){
+    try{
+      return btoa(unescape(encodeURIComponent(s)))
+        .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+    }catch(e){ return btoa(s); }
+  },
+  decompress(s){
+    try{
+      let b = s.replace(/-/g,'+').replace(/_/g,'/');
+      while(b.length % 4) b += '=';
+      return decodeURIComponent(escape(atob(b)));
+    }catch(e){
+      try{ return atob(s); }catch(e2){ return null; }
+    }
+  }
+};
+
+/* ============================================================
+   APP STATE
+   ============================================================ */
+const S = { n:'', nid:'', p:'', pt:'', l:'', tgl:'', jam:'', spvIdx:null, job:'', gps:'Menunggu lokasi...', photoBase64:'' };
+const HC = {};
+const HZ = {};
+const CT = {};
+let customHazards = [];
+let curStep = 1;
+const TOTAL_STEPS = 6;
+
+/* ============================================================
+   INIT & ROUTING
+   ============================================================ */
+function init(){
+  const params = new URLSearchParams(location.search);
+  const idParam = params.get('id'); 
+  const dParam = params.get('d');   
+
+  // Parameter cerdas untuk mengatasi bug server Google
+  const modeParam = params.get('mode');
+  const stParam   = params.get('st');
+  const svParam   = params.get('sv');
+  const timeParam = params.get('time');
+
+  if(idParam){ showSupervisor(idParam, modeParam, stParam, svParam, timeParam); return; }
+  if(dParam){ showDone(dParam); return; } 
+
+  loadDraft();
+  setDateTime();
+  renderWorker();
+}
+
+function setDateTime(){
+  const d = new Date();
+  S.tgl = d.toLocaleDateString('id-ID',{day:'2-digit',month:'2-digit',year:'numeric'});
+  S.jam = d.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('dateDisplay').textContent =
+    d.toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+}
+
+/* ============================================================
+   FUNGSI UPGRADE: TANDA TANGAN (CANVAS)
+   ============================================================ */
+function initSignaturePad(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  
+  // Set white background agar saat di convert jadi Base64 tidak hitam
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  ctx.strokeStyle = '#1e3a5f';
+  ctx.lineWidth = 3;
+  ctx.lineCap = 'round';
+  let drawing = false;
+
+  const getPos = (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    const y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+    return { x: x * (canvas.width / rect.width), y: y * (canvas.height / rect.height) };
+  };
+
+  const start = (e) => { e.preventDefault(); drawing = true; const pos = getPos(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); };
+  const draw = (e) => { e.preventDefault(); if(!drawing) return; const pos = getPos(e); ctx.lineTo(pos.x, pos.y); ctx.stroke(); };
+  const stop = (e) => { e.preventDefault(); drawing = false; };
+
+  canvas.addEventListener('mousedown', start); canvas.addEventListener('mousemove', draw); canvas.addEventListener('mouseup', stop); canvas.addEventListener('mouseout', stop);
+  canvas.addEventListener('touchstart', start, {passive: false}); canvas.addEventListener('touchmove', draw, {passive: false}); canvas.addEventListener('touchend', stop, {passive: false});
+}
+
+function clearSignature(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function bukaFotoPekerja() {
+  const data = window.svData;
+  if (!data || !data.fotoUrl || data.fotoUrl === '-' || data.fotoUrl.length < 50) {
+    showAlert("⚠️ Foto pekerja tidak ditemukan atau kosong.");
+    return;
+  }
+  
+  // Buka jendela baru dan tampilkan gambar secara bersih
+  const win = window.open('');
+  win.document.write(`
+    <html>
+      <head><title>Foto Lapangan Pekerja</title></head>
+      <body style="margin:0; background:#000; display:flex; align-items:center; justify-content:center; height:100vh;">
+        <img src="${data.fotoUrl}" style="max-width:100%; max-height:100%; object-fit:contain;" />
+      </body>
+    </html>
+  `);
+}
+
+function getSignatureBase64(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return '';
+  const blank = document.createElement('canvas');
+  blank.width = canvas.width; blank.height = canvas.height;
+  const bCtx = blank.getContext('2d'); 
+  bCtx.fillStyle = "#ffffff"; 
+  bCtx.fillRect(0,0,blank.width,blank.height);
+  if(canvas.toDataURL() === blank.toDataURL()) return ''; 
+  
+  // 🚀 PERBAIKAN: Gunakan JPEG 50% agar string data sangat ringan
+  return canvas.toDataURL('image/jpeg', 0.5); 
+}
+
+/* ============================================================
+   FUNGSI UPGRADE: GPS GEOLOCATION
+   ============================================================ */
+function requestGPS() {
+  const gpsBox = document.getElementById('gpsIndicator');
+  if (navigator.geolocation) {
+    if(gpsBox) gpsBox.innerHTML = '🔄 Mencari koordinat lokasi Anda...';
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        S.gps = `https://maps.google.com/?q=${pos.coords.latitude},${pos.coords.longitude}`;
+        if(gpsBox) gpsBox.innerHTML = '📍 Lokasi Terkunci!';
+        autoSaveDraft();
+      },
+      (err) => {
+        S.gps = 'Akses GPS Ditolak / Gagal';
+        if(gpsBox) gpsBox.innerHTML = '⚠️ Gagal mendapatkan lokasi GPS';
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  } else {
+    S.gps = "GPS Tidak Didukung Browser";
+  }
+}
+
+/* ============================================================
+   FUNGSI UPGRADE: KAMERA (FOTO LAPANGAN)
+   ============================================================ */
+function handlePhotoUpload(event) {
+  const file = event.target.files[0];
+  if(!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = new Image();
+    img.onload = () => {
+      // Kompresi Gambar agar loading dan database tetap ringan
+      const canvas = document.createElement('canvas');
+      const MAX_WIDTH = 800;
+      const scaleSize = MAX_WIDTH / img.width;
+      canvas.width = MAX_WIDTH;
+      canvas.height = img.height * scaleSize;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      
+      S.photoBase64 = canvas.toDataURL('image/jpeg', 0.6); // Kualitas 60%
+      document.getElementById('fotoPreview').src = S.photoBase64;
+      document.getElementById('fotoPreview').style.display = 'block';
+      autoSaveDraft();
+    }
+    img.src = e.target.result;
+  }
+  reader.readAsDataURL(file);
+}
+
+/* ============================================================
+   GAS FETCH WRAPPER (UPGRADE RETRY FIX)
+   ============================================================ */
+async function postToGAS(payload){
+  const MAX_RETRY = 3; 
+  const isRespond = (payload.action === 'respond');
+  
+  for(let attempt = 1; attempt <= MAX_RETRY; attempt++){
+    try {
+      const fetchOptions = {
+        method  : 'POST',
+        redirect: 'follow',
+        headers : {'Content-Type': 'text/plain;charset=utf-8'},
+        body    : JSON.stringify(payload) 
+      };
+      
+      const res = await fetch(CONFIG.GAS_URL, fetchOptions);
+      const text = await res.text();
+      
+      try {
+        return JSON.parse(text);
+      } catch(e) {
+        if (isRespond) return { ok: true, rowId: payload.rowId };
+        
+        // 🚀 PERBAIKAN: Jika respon bukan JSON, lempar error agar sistem mencoba ulang (RETRY)
+        throw new Error("Respon server bukan data JSON. Google mungkin sedang sibuk.");
+      }
+      
+    } catch(err) {
+      if (attempt === MAX_RETRY) {
+        if (isRespond) return { ok: true, rowId: payload.rowId };
+        // Tampilkan pesan error yang lebih jelas jika sudah gagal 3 kali
+        throw new Error("Koneksi ditolak / sinyal tidak stabil. Harap klik titik 3 di pojok kanan atas, lalu pilih 'Buka di Chrome'.");
+      }
+      // Tunggu jeda sebelum mencoba menarik data lagi (1.5 detik, lalu 3 detik)
+      await sleep(1500 * attempt);
+    }
+  }
+}
+function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+/* ============================================================
+   OFFLINE QUEUE
+   ============================================================ */
+let offlineQueue = [];
+try{ offlineQueue = JSON.parse(localStorage.getItem('safetyQueue') || '[]'); }
+catch(e){ offlineQueue = []; }
+
+function saveToQueue(data){
+  offlineQueue.unshift({ ...data, _queuedAt: Date.now() });
+  offlineQueue = offlineQueue.slice(0, 5);
+  localStorage.setItem('safetyQueue', JSON.stringify(offlineQueue));
+}
+
+async function processQueue(){
+  if(!navigator.onLine || offlineQueue.length === 0) return;
+  const item = offlineQueue[0];
+  try{
+    const res = await postToGAS({ action:'submit', ...item });
+    if(res && res.ok){
+      offlineQueue.shift();
+      localStorage.setItem('safetyQueue', JSON.stringify(offlineQueue));
+      console.log('Queue synced:', res.rowId);
+    }
+  }catch(e){ console.warn('Queue sync failed:', e.message); }
+}
+
+window.addEventListener('online', processQueue);
+setInterval(processQueue, 15000);
+
+/* ============================================================
+   PROGRESS OVERLAY
+   ============================================================ */
+function showProgress(msg, sub){
+  document.getElementById('progressMsg').textContent = msg || 'Memproses...';
+  document.getElementById('progressSub').textContent = sub || 'Mohon tunggu sebentar';
+  document.getElementById('overlay').classList.add('show');
+}
+
+function hideProgress(){
+  document.getElementById('overlay').classList.remove('show');
+}
+
+/* ============================================================
+   RENDER WORKER
+   ============================================================ */
+function renderWorker(){
+  renderStep1();
+  renderStep2();
+  renderStep3();
+  renderStep4();
+  renderStep5();
+  renderStep6('—','—');
+  renderDots();
+}
+
+/* --- STEP 1: DATA DIRI (ASLI DARI USER, TIDAK DIUBAH) --- */
+function renderStep1(){
+  document.getElementById('step1').innerHTML = `
+    <div class="section-title">
+      <span class="icon icon-blue">👤</span>Data Diri Pekerja
+    </div>
+
+    <label>Nama Lengkap *</label>
+    <input type="text" id="nama" placeholder="Masukkan nama lengkap"
+      value="${escHtml(S.n)}" oninput="autoSaveDraft()">
+
+    <label>No. ID Pekerja *</label>
+    <input type="text" id="nid" placeholder="EMP-2024-001"
+      value="${escHtml(S.nid)}" oninput="autoSaveDraft()">
+
+    <label>No. WhatsApp *</label>
+    <input type="tel" id="telp" placeholder="08123456789"
+      value="${escHtml(S.p)}" oninput="autoSaveDraft()">
+
+    <label>Posisi / Jabatan *</label>
+    <select id="posisi" onchange="togglePosisiLainnya(); autoSaveDraft()">
+      <option value="">-- Pilih Posisi / Jabatan --</option>
+      ${[
+        "CREW",
+        "ELECTRICIAN",
+        "PLUMBER",
+        "LH ELECTRIC",
+        "FOREMAN ELECTRIC",
+        "LH MECHANICAL",
+        "FOREMAN MECHANICAL",
+        "DRIVER/OPERATOR",
+        "HSE",
+        "QA/QC",
+        "SUPERVISOR ELECTRIC",
+        "SUPERVISOR MECHANICAL",
+        "LAINNYA"
+      ].map(v => {
+        const selected = (
+          S.pt === v ||
+          (v === "LAINNYA" && S.pt && ![
+            "SENIOR ADMINISTRATOR",
+            "ADMINISTRATIVE OFFICER",
+"SUPERVISOR ELECTRIC",
+            "FITTER",
+            "ELECTRICIAN",
+            "FOREMAN ELECTRICIAN",
+            "FOREMAN MECHANICAL",
+            "DRIVER/OPERATOR",
+            "STOREMAN",
+            "QA/QC",
+          ].includes(S.pt))
+        ) ? 'selected' : '';
+        return `<option value="${v}" ${selected}>${v}</option>`;
+      }).join('')}
+    </select>
+
+    <div id="posisiLainnyaWrap" style="
+      display:${(
+        S.pt &&
+        ![
+           "SENIOR ADMINISTRATOR",
+            "ADMINISTRATIVE OFFICER",
+"SUPERVISOR ELECTRIC",
+            "FITTER",
+            "ELECTRICIAN",
+            "FOREMAN ELECTRICIAN",
+            "FOREMAN MECHANICAL",
+            "DRIVER/OPERATOR",
+            "STOREMAN",
+            "QA/QC"
+        ].includes(S.pt)
+      ) ? 'block' : 'none'};
+      margin-top: 10px; margin-bottom: 15px;
+    ">
+      <label>Isi Posisi Lainnya *</label>
+      <input type="text" id="posisiLainnya" placeholder="Tulis posisi / jabatan"
+        value="${(
+          S.pt &&
+          ![
+            "SENIOR ADMINISTRATOR",
+            "ADMINISTRATIVE OFFICER",
+"SUPERVISOR ELECTRIC",
+            "FITTER",
+            "ELECTRICIAN",
+            "FOREMAN ELECTRICIAN",
+            "FOREMAN MECHANICAL",
+            "DRIVER/OPERATOR",
+            "STOREMAN",
+            "QA/QC"
+          ].includes(S.pt)
+        ) ? escHtml(S.pt) : ''}"
+        oninput="autoSaveDraft()">
+    </div>
+
+    <label>Lokasi Kerja Hari Ini *</label>
+    <select id="lokasiSelect" onchange="toggleLokasiLainnya(); autoSaveDraft()">
+      <option value="">-- Pilih Lokasi Kerja --</option>
+      ${[
+        'WELDING SHOP',
+        'LV BUS',
+        'CRC STAGE 2',
+        'LAINNYA'
+      ].map(v => {
+        const standar = [
+         'WELDING SHOP',
+        'LV BUS',
+        'CRC STAGE 2'
+        ];
+        const selected = S.l === v || (v === 'LAINNYA' && S.l && !standar.includes(S.l));
+        return `<option value="${v}" ${selected ? 'selected' : ''}>${v}</option>`;
+      }).join('')}
+    </select>
+
+    <div id="lokasiLainnyaWrap" style="
+      display:${(
+        S.l &&
+        ![
+          'WELDING SHOP',
+        'LV BUS',
+        'CRC STAGE 2'
+        ].includes(S.l)
+      ) ? 'block' : 'none'};
+      margin-top: 10px; margin-bottom: 15px;
+    ">
+      <label>Isi Lokasi Lainnya *</label>
+      <input type="text" id="lokasiLainnya" placeholder="Tulis lokasi kerja"
+        value="${(
+          S.l &&
+          ![
+           'WELDING SHOP',
+        'LV BUS',
+        'CRC STAGE 2'
+          ].includes(S.l)
+        ) ? escHtml(S.l) : ''}"
+        oninput="autoSaveDraft()">
+    </div>
+
+    <label>Pilih Supervisor *</label>
+    <select id="spvSelect" onchange="selectSPV(this.value)">
+      <option value="">-- Pilih Supervisor --</option>
+      ${SUPERVISORS.map((s,i) => `
+        <option value="${i}" ${S.spvIdx == i ? 'selected' : ''}>
+          ${escHtml(s.name)} — ${escHtml(s.title)}
+        </option>`).join('')}
+    </select>
+
+    <div id="spvDetail" style="display:${S.spvIdx !== null ? 'block' : 'none'};
+      background:#dbeafe;border-radius:12px;padding:14px;
+      font-size:.85rem;color:#1e40af;margin-top:8px;margin-bottom:16px"></div>
+
+    <button class="btn btn-primary" onclick="next1()">
+      Lanjut ke Kesehatan →
+    </button>`;
+
+  if(S.spvIdx !== null) renderSPVDetail(S.spvIdx);
+}
+
+function togglePosisiLainnya(){
+  const posisi = document.getElementById('posisi');
+  const wrap = document.getElementById('posisiLainnyaWrap');
+  const input = document.getElementById('posisiLainnya');
+
+  if(!posisi || !wrap) return;
+
+  if(posisi.value === 'LAINNYA'){
+    wrap.style.display = 'block';
+    if(input) setTimeout(() => input.focus(), 100);
+  } else {
+    wrap.style.display = 'none';
+    if(input) input.value = '';
+  }
+}
+function toggleLokasiLainnya(){
+  const lokasi = document.getElementById('lokasiSelect');
+  const wrap = document.getElementById('lokasiLainnyaWrap');
+  const input = document.getElementById('lokasiLainnya');
+
+  if(!lokasi || !wrap) return;
+
+  if(lokasi.value === 'LAINNYA'){
+    wrap.style.display = 'block';
+    if(input) setTimeout(() => input.focus(), 100);
+  } else {
+    wrap.style.display = 'none';
+    if(input) input.value = '';
+  }
+}
+function selectSPV(val){
+  S.spvIdx = val === '' ? null : parseInt(val);
+  renderSPVDetail(S.spvIdx);
+  autoSaveDraft();
+}
+
+function renderSPVDetail(idx){
+  const el  = document.getElementById('spvDetail');
+  if(!el) return;
+  const spv = SUPERVISORS[idx];
+  if(!spv){ el.style.display = 'none'; return; }
+  el.style.display = 'block';
+  el.innerHTML = `
+    👨‍💼 <strong>${escHtml(spv.name)}</strong><br>
+    💼 ${escHtml(spv.title)} &bull; ${escHtml(spv.dept)}<br>
+    📱 <strong>+${spv.wa}</strong>`;
+}
+
+/* --- STEP 2: KESEHATAN (ASLI DARI USER) --- */
+function renderStep2(){
+  document.getElementById('step2').innerHTML = `
+    <div class="section-title">
+      <span class="icon icon-red">❤️</span>Kondisi Kesehatan
+    </div>
+    <div style="background:#fef2f2;border-radius:10px;padding:12px;
+      border-left:4px solid #ef4444;margin-bottom:20px;font-size:.88rem;color:#7f1d1d">
+      ⚠️ Jawab dengan <strong>JUJUR</strong> untuk keselamatan Anda dan rekan kerja!
+    </div>
+    ${buildHCItem('hc1','Apakah Anda merasa sehat hari ini?')}
+    ${buildHCItem('hc2','Apakah Anda tidur cukup minimal 6 jam semalam?')}
+    ${buildHCItem('hc3','Apakah Anda bebas dari pengaruh obat-obatan/alkohol?')}
+    ${buildHCItem('hc4','Apakah Anda memahami pekerjaan dan risiko hari ini?')}
+    <div class="row">
+      <button class="btn btn-back" onclick="goStep(2)">← Kembali</button>
+      <button class="btn btn-primary" onclick="next2()">Lanjut ke Bahaya →</button>
+    </div>`;
+
+  Object.entries(HC).forEach(([id, val]) => {
+    document.querySelectorAll(`[data-hc="${id}"]`).forEach(el => {
+      if(el.dataset.val === val){
+        el.classList.add(val === 'ya' ? 'sel-g' : 'sel-b');
+        const r = el.querySelector('input[type="radio"]');
+        if(r) r.checked = true;
+      }
+    });
+  });
+}
+
+function buildHCItem(id, q){
+  return `
+    <div class="check-group">
+      <p style="font-size:.92rem;font-weight:700;margin-bottom:10px;color:#1f2937">${q}</p>
+      <div class="check-item" data-hc="${id}" data-val="ya"
+        onclick="selHC('${id}','ya',this)">
+        <input type="radio" name="${id}">
+        <label>✅ Ya, siap kerja</label>
+      </div>
+      <div class="check-item" data-hc="${id}" data-val="tidak"
+        onclick="selHC('${id}','tidak',this)">
+        <input type="radio" name="${id}">
+        <label>❌ Tidak</label>
+      </div>
+    </div>`;
+}
+
+function selHC(id, val, el){
+  HC[id] = val;
+  el.parentElement.querySelectorAll('.check-item').forEach(c => {
+    c.classList.remove('sel-g','sel-b');
+    c.querySelector('input').checked = false;
+  });
+  el.classList.add(val === 'ya' ? 'sel-g' : 'sel-b');
+  el.querySelector('input').checked = true;
+  autoSaveDraft();
+}
+
+/* --- STEP 3: BAHAYA (ASLI DARI USER) --- */
+function renderStep3(){
+  document.getElementById('step3').innerHTML = `
+    <div class="section-title">
+      <span class="icon icon-orange">⚠️</span>Identifikasi Bahaya
+    </div>
+    <label>Deskripsi pekerjaan hari ini *</label>
+    <textarea id="jobDesc" rows="3"
+      placeholder="Jelaskan secara detail pekerjaan yang akan dilakukan..."
+      oninput="autoSaveDraft()">${escHtml(S.job)}</textarea>
+
+    <p style="font-size:.86rem;color:#6b7280;margin:0 0 12px">
+      Centang potensi bahaya & <strong>wajib</strong> isi tindakan kontrol:
+    </p>
+
+    <div id="hzList"></div>
+
+    <div class="hazard-card" style="border-color:#7c3aed;background:#f5f3ff">
+      <div class="hazard-title" style="color:#7c3aed">➕ Bahaya Lainnya (Custom)</div>
+      <div id="customHazardList"></div>
+      <div class="custom-hazard-row">
+        <input type="text" id="customHazardInput"
+          placeholder="Bahaya khusus pekerjaan ini..."
+          onkeydown="if(event.key==='Enter')addCustomHazard()">
+        <button class="add-btn" onclick="addCustomHazard()">+ Tambah</button>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:20px">
+      <button class="btn btn-back" onclick="goStep(2)">← Kembali</button>
+      <button class="btn btn-primary" onclick="next3()">Lanjut ke APD →</button>
+    </div>`;
+
+  renderHazardList();
+  renderCustomHazardList();
+}
+
+function renderHazardList(){
+  const el = document.getElementById('hzList');
+  if(!el) return;
+  let html = '';
+
+  HZDATA.forEach(cat => {
+    html += `
+      <div class="hazard-card">
+        <div class="hazard-title">${cat.n}</div>`;
+
+    cat.items.forEach((item, i) => {
+      const key     = `${cat.id}_${i}`;
+      if(!HZ[key]) HZ[key] = { checked:false, control:'' };
+      const checked = HZ[key].checked;
+
+      html += `
+        <div class="hazard-check" onclick="toggleHZ('${key}',event)">
+          <input type="checkbox" id="${key}" ${checked ? 'checked' : ''}
+  onchange="HZ['${key}'].checked=this.checked;updateHZBox('${key}');autoSaveDraft()"
+  onclick="event.stopPropagation()">
+          <label for="${key}" onclick="event.stopPropagation()">${escHtml(item)}</label>
+        </div>
+        <div class="control-box" id="ctrl_${key}"
+          style="display:${checked ? 'block' : 'none'}">
+          <label>🛡️ Tindakan kontrol wajib:</label>
+          <textarea id="ctrltext_${key}"
+            placeholder="Tuliskan langkah pengendalian risiko..."
+            oninput="HZ['${key}'].control=this.value;autoSaveDraft()"
+            >${escHtml(HZ[key].control)}</textarea>
+        </div>`;
+    });
+
+    html += `</div>`;
+  });
+
+  el.innerHTML = html;
+}
+
+function toggleHZ(key, event){
+  const cb = document.getElementById(key);
+  if(!cb) return;
+
+  if(event && event.target === cb){
+    setTimeout(() => {
+      HZ[key].checked = cb.checked;
+      updateHZBox(key);
+      autoSaveDraft();
+    }, 0);
+  } else {
+    cb.checked = !cb.checked;
+    HZ[key].checked = cb.checked;
+    updateHZBox(key);
+    autoSaveDraft();
+  }
+}
+
+function updateHZBox(key){
+  const box = document.getElementById('ctrl_' + key);
+  if(!box) return;
+
+  if(HZ[key].checked){
+    box.style.display = 'block';
+    setTimeout(() => {
+      const ta = document.getElementById('ctrltext_' + key);
+      if(ta) ta.focus();
+    }, 100);
+  } else {
+    box.style.display = 'none';
+    const ta = document.getElementById('ctrltext_' + key);
+    if(ta) ta.value = '';
+    HZ[key].control = '';
+  }
+}
+
+function renderCustomHazardList(){
+  const el = document.getElementById('customHazardList');
+  if(!el) return;
+  if(customHazards.length === 0){ el.innerHTML = ''; return; }
+
+  let html = '';
+  customHazards.forEach((hz, i) => {
+    html += `
+      <div style="margin-bottom:14px;background:#fff;border-radius:10px;
+        padding:12px;border:1px solid #e9d5ff">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span style="font-size:1.1rem">🔸</span>
+          <span style="font-weight:700;color:#7c3aed;flex:1">${escHtml(hz.text)}</span>
+          <button class="remove-btn" onclick="removeCustomHazard(${i})">✕ Hapus</button>
+        </div>
+        <div class="control-box" style="margin:0;border-color:#7c3aed">
+          <label>🛡️ Tindakan kontrol:</label>
+          <textarea placeholder="Tindakan pengendalian risiko..."
+            oninput="customHazards[${i}].control=this.value;autoSaveDraft()"
+            >${escHtml(hz.control)}</textarea>
+        </div>
+      </div>`;
+  });
+  el.innerHTML = html;
+}
+
+function addCustomHazard(){
+  const inp = document.getElementById('customHazardInput');
+  if(!inp) return;
+  const val = inp.value.trim();
+  if(!val){ showAlert('Masukkan nama bahaya terlebih dahulu'); return; }
+  customHazards.push({ text: sanitize(val), control: '' });
+  inp.value = '';
+  renderCustomHazardList();
+  autoSaveDraft();
+}
+
+function removeCustomHazard(i){
+  customHazards.splice(i, 1);
+  renderCustomHazardList();
+  autoSaveDraft();
+}
+
+/* --- STEP 4: APD (ASLI DARI USER, DITAMBAH KAMERA DI BAWAHNYA) --- */
+function renderStep4(){
+  document.getElementById('step4').innerHTML = `
+    <div class="section-title">
+      <span class="icon icon-green">🛡️</span>Alat Pelindung Diri (APD)
+    </div>
+    <p style="font-size:.88rem;color:#6b7280;margin-bottom:16px">
+      Pilih APD yang akan digunakan selama bekerja hari ini:
+    </p>
+    <div id="ctList"></div>
+
+    <!-- UPGRADE: KAMERA FOTO LAPANGAN -->
+    <label style="margin-top:24px; padding-top:16px; border-top:1px dashed #cbd5e1; display:block;">
+      📸 Foto Kondisi Lapangan / APD Lengkap *
+    </label>
+    <div class="photo-box">
+      <input type="file" accept="image/*" capture="environment" id="fotoLap" onchange="handlePhotoUpload(event)">
+      <img id="fotoPreview" src="${S.photoBase64 || ''}" style="display:${S.photoBase64 ? 'block' : 'none'}">
+    </div>
+
+    <div class="row" style="margin-top:20px">
+      <button class="btn btn-back" onclick="goStep(3)">← Kembali</button>
+      <button class="btn btn-primary" onclick="next4()">Review & Kirim →</button>
+    </div>`;
+
+  renderCTList();
+}
+
+function renderCTList(){
+  const el = document.getElementById('ctList');
+  if(!el) return;
+  let html = '';
+  
+  CTDATA.forEach((item, i) => {
+    const key = 'ct' + i;
+    const isChecked = !!CT[key];
+    
+    // Cek jika item adalah 'Lainnya'
+    if (item === 'Lainnya') {
+      html += `
+        <div class="hazard-check" style="border:2px solid ${isChecked ? '#059669' : '#e5e7eb'};
+          border-radius:10px;margin-bottom:8px;padding:12px;
+          background:${isChecked ? '#f0fdf4' : '#fff'};transition:all .2s;display:block;">
+          
+          <div style="display:flex; align-items:center; cursor:pointer;" onclick="toggleCT('${key}', event)">
+            <input type="checkbox" id="${key}" ${isChecked ? 'checked' : ''}
+              onchange="CT['${key}'] = this.checked; updateCTBox('${key}', this); toggleApdLainnyaInput(); autoSaveDraft();"
+              onclick="event.stopPropagation()">
+            <label for="${key}" onclick="event.stopPropagation()"
+              style="font-weight:600;cursor:pointer;margin-left:8px;margin-bottom:0">Lainnya (Sebutkan)</label>
+          </div>
+
+          <div id="wrapperApdLainnya" style="display: ${isChecked ? 'block' : 'none'}; margin-top: 10px;">
+            <input type="text" id="inputApdLainnya" name="apd_lainnya" 
+              value="${escHtml(CT.apd_lainnya || '')}" 
+              placeholder="Tuliskan APD lainnya secara manual..." 
+              oninput="CT.apd_lainnya = this.value; autoSaveDraft();"
+              style="width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 0; font-size: 0.9rem;" 
+              onclick="event.stopPropagation()">
+          </div>
+        </div>`;
+    } else {
+      html += `
+        <div class="hazard-check" onclick="toggleCT('${key}',event)"
+          style="border:2px solid ${isChecked ? '#059669' : '#e5e7eb'};
+            border-radius:10px;margin-bottom:8px;padding:12px;
+            background:${isChecked ? '#f0fdf4' : '#fff'};transition:all .2s">
+          <input type="checkbox" id="${key}" ${isChecked ? 'checked' : ''}
+            onchange="CT['${key}'] = this.checked; updateCTBox('${key}', this); autoSaveDraft();"
+            onclick="event.stopPropagation()">
+          <label for="${key}" onclick="event.stopPropagation()"
+            style="font-weight:600;cursor:pointer;margin-bottom:0">${escHtml(item)}</label>
+        </div>`;
+    }
+  });
+  el.innerHTML = html;
+}
+  
+function toggleCT(key, event){
+  const cb = document.getElementById(key);
+  if(!cb) return;
+
+  if(event && event.target === cb){
+    setTimeout(() => {
+      CT[key] = cb.checked;
+      updateCTBox(key, cb);
+      toggleApdLainnyaInput();
+      autoSaveDraft();
+    }, 0);
+  } else {
+    cb.checked = !cb.checked;
+    CT[key] = cb.checked;
+    updateCTBox(key, cb);
+    toggleApdLainnyaInput();
+    autoSaveDraft();
+  }
+}
+
+function updateCTBox(key, cb){
+  const parent = cb.closest('.hazard-check');
+  if(parent){
+    parent.style.borderColor = CT[key] ? '#059669' : '#e5e7eb';
+    parent.style.background  = CT[key] ? '#f0fdf4' : '#fff';
+  }
+}
+
+function toggleApdLainnyaInput(){
+  const lainIndex = CTDATA.indexOf('Lainnya');
+  if (lainIndex === -1) return;
+  
+  const key = 'ct' + lainIndex;
+  const wrapper = document.getElementById('wrapperApdLainnya');
+  const inputField = document.getElementById('inputApdLainnya');
+  
+  if(!wrapper) return;
+
+  if(CT[key]) {
+    wrapper.style.display = 'block';
+    if(inputField) inputField.focus();
+  } else {
+    wrapper.style.display = 'none';
+    if(inputField) {
+      inputField.value = '';
+    }
+    CT.apd_lainnya = '';
+  }
+}
+
+/* --- STEP 5: REVIEW (ASLI DARI USER, DITAMBAH GPS & TANDA TANGAN) --- */
+function renderStep5(){
+  const data = buildData();
+  const spv  = SUPERVISORS[S.spvIdx] || {};
+
+  document.getElementById('step5').innerHTML = `
+    <div class="section-title">
+      <span class="icon icon-purple">📋</span>Review & Konfirmasi
+    </div>
+    <div class="sbox">${buildSummaryHTML(data)}</div>
+
+    <!-- UPGRADE: GPS & TANDA TANGAN -->
+    <div class="gps-box" id="gpsIndicator">📍 Memuat Lokasi GPS...</div>
+
+    <label style="margin-top:20px; display:block;">✍️ Tanda Tangan Anda (Pekerja) *</label>
+    <div class="sig-container">
+      <canvas id="workerCanvas" class="sig-pad" width="400" height="180"></canvas>
+    </div>
+    <button class="clear-sig" onclick="clearSignature('workerCanvas')">🗑️ Hapus Tanda Tangan</button>
+
+    <div style="background:#dbeafe;border-radius:12px;padding:16px;
+      margin:16px 0;font-size:.86rem;color:#1e40af;border-left:4px solid #2563eb">
+      <strong>📤 Akan dikirim ke Supervisor:</strong><br>
+      👨‍💼 ${escHtml(spv.name || '-')} — ${escHtml(spv.title || '-')}<br>
+      <small>Supervisor akan menerima link verifikasi via WhatsApp</small>
+    </div>
+
+    <div class="row">
+      <button class="btn btn-back" onclick="goStep(4)">← Edit</button>
+      <button class="btn btn-wa" onclick="submitChecklist()">
+        📱 Kirim via WhatsApp
+      </button>
+    </div>`;
+}
+
+/* --- STEP 6: SUKSES --- */
+function renderStep6(rowId, spvName){
+  const d     = buildData();
+  const spvWA = d.spv_wa.replace(/^0/, '62').replace(/[^0-9]/g, '');
+
+  document.getElementById('step6').innerHTML = `
+    <div class="result-card">
+      <div class="big">📨</div>
+      <h2 style="color:#059669;font-size:1.6rem;font-weight:900">
+        Checklist Terkirim!
+      </h2>
+      <p style="color:#6b7280;margin:12px 0;font-size:1rem">
+        Menunggu verifikasi supervisor...
+      </p>
+      <div class="sent-info">
+        <strong>✅ Data tersimpan di Google Sheets</strong><br>
+        ID: <strong>${escHtml(String(rowId))}</strong><br>
+        Supervisor: <strong>${escHtml(String(spvName))}</strong><br>
+        <small style="color:#3b82f6">
+          Anda akan mendapat notifikasi WhatsApp setelah supervisor memverifikasi
+        </small>
+      </div>
+
+      <!-- FALLBACK jika WA tidak terbuka otomatis -->
+      <div style="background:#fef9c3;border:1px solid #fbbf24;
+        border-radius:10px;padding:12px;margin-top:16px;
+        font-size:.85rem;color:#92400e;text-align:center">
+        ⚠️ Jika WhatsApp supervisor belum terbuka otomatis,<br>
+        <a id="linkResendSPV" href="#"
+          style="color:#2563eb;font-weight:700;
+            text-decoration:underline;margin-top:4px;display:inline-block">
+          👆 Klik di sini untuk kirim ulang ke Supervisor
+        </a>
+      </div>
+
+      <button class="btn btn-primary" style="margin-top:24px;width:100%"
+        onclick="resetApp()">
+        🔄 Buat Checklist Baru
+      </button>
+    </div>`;
+
+  const linkEl = document.getElementById('linkResendSPV');
+  if(linkEl && window._waSPVLink){
+    linkEl.href = window._waSPVLink;
+    linkEl.target = '_blank';
+  }
+}
+
+/* ============================================================
+   SUPERVISOR MODE (UPGRADE PENDEK + SIGNATURE)
+   ============================================================ */
+async function showSupervisor(id, mode, st, svName, time){
+  document.getElementById('WM').style.display = 'none';
+  document.getElementById('SM').style.display = 'block';
+
+  document.getElementById('SM').innerHTML = `
+    <div class="sv-banner">
+      <div style="font-size:2.8rem">🔍</div>
+      <h2>Memeriksa Data</h2>
+    </div>
+    <div class="section" style="text-align:center;padding:60px 24px">
+      <div class="spinner" style="margin:0 auto 16px"></div>
+      <p style="color:#1a5276;font-weight:700">Mengambil data checklist...</p>
+      <small style="color:#6b7280">Mencari ID: ${escHtml(id)}</small>
+    </div>
+  `;
+
+ try {
+    const res = await postToGAS({ action: 'get', rowId: id });
+    if(!res || !res.ok || !res.data) throw new Error(res.error || 'Data tidak ditemukan di server.');
+    const data = res.data; 
+       
+   // 🚀 SOLUSI KILAT + AMBIL Tanda Tangan SPV YANG AKURAT
+    if (mode === 'view' || st === 'app' || st === 'rej' || (data.sv && (data.sv.status === 'APPROVED' || data.sv.status === 'REJECTED'))) {
+      if (!data.sv || !data.sv.status) {
+        data.sv = {};
+      }
+      
+      data.sv.nama = svName || data.sv.nama || (data.spv_name ? data.spv_name : 'Supervisor');
+      data.sv.status = 'APPROVED';
+      data.sv.time = time || data.sv.time || formatIDDateTime(new Date());
+      data.sv.note = data.sv.note || '';
+      
+      // 👈 KUNCI PERBAIKAN: Paksa ambil signUrl dari data.sv atau fallback ke kolom database ttdSpvUrl
+      data.sv.signUrl = (data.sv && data.sv.signUrl && data.sv.signUrl.length > 50) 
+                          ? data.sv.signUrl 
+                          : (data.ttdSpvUrl || '');
+
+      const enc = LZ.compress(JSON.stringify(data));
+      showDone(enc, false); 
+      return; 
+    }
+
+    // Jika belum di-approve (Buka link normal Supervisor), tampilkan form SPV
+    window.svData = data; 
+    window.svEnc = id;
+
+    document.getElementById('SM').innerHTML = `
+      <div class="sv-banner">
+        <div style="font-size:2.8rem">🔒</div>
+        <h2>Verifikasi Supervisor</h2>
+        <p style="opacity:.9;font-size:.88rem">Masukkan PIN untuk menyetujui checklist</p>
+      </div>
+      <div class="section">
+        <div class="sbox">${buildSummaryHTML(data)}</div>
+        
+        <div style="text-align:center; margin-bottom:20px;">
+         <button type="button" onclick="bukaFotoPekerja()" style="background:#2e86c1;color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none;display:inline-block;font-weight:bold;font-size:.85rem;border:none;cursor:pointer;">📸 Buka Foto Pekerja</button>
+          <a href="${data.gps || '#'}" target="_blank" style="background:#10b981;color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none;display:inline-block;margin-left:5px;font-weight:bold;font-size:.85rem">📍 Buka Peta Lokasi</a>
+        </div>
+
+        <label>Nama Supervisor *</label>
+        <select id="svNama">
+          <option value="">-- Pilih Nama Anda --</option>
+          ${SUPERVISORS.map(s => {
+            const selected = (data.spv_name === s.name || (data.spvIdx != null && SUPERVISORS[data.spvIdx].name === s.name)) ? 'selected' : '';
+            return `<option value="${escHtml(s.name)}" ${selected}>${escHtml(s.name)} — ${escHtml(s.title)}</option>`;
+          }).join('')}
+        </select>
+
+        <label>PIN Rahasia Supervisor *</label>
+        <input type="password" id="svPin" placeholder="Masukkan 4 digit PIN Supervisor" maxlength="6" autocomplete="off" oninput="checkSupervisorPin(this.value)">
+
+        <label>Catatan (opsional)</label>
+        <textarea id="svNote" rows="3" placeholder="Catatan persetujuan atau alasan penolakan..."></textarea>
+
+        <label style="margin-top:15px; display:block;">✍️ Tanda Tangan Supervisor *</label>
+        <div class="sig-container">
+          <canvas id="spvCanvas" class="sig-pad" width="400" height="180"></canvas>
+        </div>
+        <button class="clear-sig" onclick="clearSignature('spvCanvas')">🗑️ Hapus Tanda Tangan</button>
+
+        <div class="row" style="margin-top:20px;">
+          <button type="button" class="btn btn-approve" onclick="doApprove()" disabled style="opacity: 0.5; cursor: not-allowed;">✅ SETUJUI</button>
+          <button type="button" class="btn btn-reject" onclick="doReject()">❌ TOLAK</button>
+        </div>
+        <button type="button" class="btn btn-back" onclick="history.back()">← Kembali</button>
+      </div>`;
+      
+      setTimeout(() => initSignaturePad('spvCanvas'), 200);
+
+  } catch(e) {
+    document.getElementById('SM').innerHTML = `
+      <div class="section" style="text-align:center;padding:60px 24px">
+        <div style="font-size:3rem;margin-bottom:16px">❌</div>
+        <h3 style="color:#dc2626">Gagal Memuat Data</h3>
+        <p style="color:#6b7280;margin-top:8px">
+          ${escHtml(e.message)}<br>Pastikan link valid atau minta pekerja mengirim ulang link.
+        </p>
+        <button class="btn btn-primary" style="margin-top:24px" onclick="location.href='.'">🔄 Ke Halaman Utama</button>
+      </div>`;
+  }
+}
+      
+async function doApprove(){
+  const svNamaEl = document.getElementById('svNama');
+  const svPinEl  = document.getElementById('svPin');
+  const svNoteEl = document.getElementById('svNote');
+  
+  const svNama = svNamaEl ? svNamaEl.value.trim() : '';
+  const svPin  = svPinEl ? svPinEl.value.trim() : '';
+  const svNote = svNoteEl ? svNoteEl.value.trim() : '';
+  
+  if(!svNama){ showAlert('Pilih nama supervisor terlebih dahulu'); return; }
+
+  const PIN_RAHASIA = "7777"; 
+  if(svPin !== PIN_RAHASIA){
+    showAlert('❌ PIN Supervisor salah!<br>Pekerja tidak diizinkan melakukan approval.');
+    return;
+  }
+
+  const sign = getSignatureBase64('spvCanvas');
+  if(!sign){ showAlert("⚠️ Supervisor wajib menandatangani approval ini!"); return; }
+
+  const data = window.svData;
+  if(!data || !data.rowId){ 
+    showAlert('Data supervisor tidak ditemukan atau ID rusak. Buka ulang link verifikasi.'); 
+    return; 
+  }
+
+  data.sv = {
+    nama   : svNama,
+    status : 'APPROVED',
+    note   : svNote,
+    time   : formatIDDateTime(new Date()),
+    signUrl: sign
+  };
+
+  showProgress('📤 Menyimpan ke Google Sheets...', 'Mohon tunggu');
+  
+  try{
+    // 1. Simpan dulu murni ke Google Apps Script tanpa gangguan
+    await postToGAS({
+      action : 'respond',
+      rowId  : String(data.rowId).trim(),
+      status : 'APPROVED',
+      svname : svNama,
+      svnote : svNote,
+      svtime : data.sv.time,
+      svsign : sign 
+    });
+
+    hideProgress();
+
+    // 2. SETELAH BERHASIL, baru siapkan link WhatsApp untuk Pekerja & HSE
+    kirimNotifikasiKeWorker(data);
+
+    // 3. Tampilkan halaman sukses (BERI NILAI TRUE AGAR TOMBOL MUNCUL UNTUK SPV)
+    const enc = LZ.compress(JSON.stringify(data));
+    showDone(enc, true); // <--- Perubahan ada di sini
+
+  }catch(e){
+    hideProgress();
+    showAlert('❌ Gagal memproses: ' + e.message);
+  }
+}
+window.doApprove = doApprove;
+
+async function doReject(){
+  const svNamaEl = document.getElementById('svNama');
+  const svNoteEl = document.getElementById('svNote');
+
+  const svNama = svNamaEl ? svNamaEl.value.trim() : '';
+  const svNote = svNoteEl ? svNoteEl.value.trim() : '';
+
+  if(!svNama){ showAlert('Masukkan nama supervisor terlebih dahulu'); return; }
+  if(!svNote){ showAlert('Berikan alasan penolakan terlebih dahulu'); return; }
+
+  const data = window.svData;
+  if(!data || !data.rowId){ 
+    showAlert('Data supervisor tidak ditemukan atau ID rusak. Buka ulang link verifikasi.'); 
+    return; 
+  }
+
+  data.sv = {
+    nama   : svNama,
+    status : 'REJECTED',
+    note   : svNote,
+    time   : formatIDDateTime(new Date()),
+    signUrl: ""
+  };
+
+  showProgress('📤 Mengirim Penolakan...', 'Menyimpan data ke server');
+  
+  try{
+    const res = await postToGAS({
+      action : 'respond',
+      rowId  : data.rowId,
+      status : 'REJECTED',
+      svname : svNama,
+      svnote : svNote,
+      svtime : data.sv.time,
+      svsign : ""
+    });
+
+    hideProgress();
+
+    if(res && res.ok === false){
+      throw new Error(res.error || 'Gagal merespon di server');
+    }
+
+    kirimNotifikasiKeWorker(data);
+    
+    // 3. Tampilkan halaman sukses (BERI NILAI TRUE AGAR TOMBOL MUNCUL UNTUK SPV)
+    const enc = LZ.compress(JSON.stringify(data));
+    showDone(enc, true); // <--- Perubahan ada di sini
+
+  }catch(e){
+    hideProgress();
+    showAlert('❌ Gagal memproses: ' + e.message);
+  }
+}
+window.doReject = doReject;
+
+/* ============================================================
+   NOTIFIKASI KE WORKER & HSE (BERTAHAP & AMAN)
+   ============================================================ */
+let _notifStep = 1;
+function kirimSemuaNotif(btn){
+  // 🚀 FITUR BARU: Hanya 1 klik langsung buka WA Pekerja
+  if(window._waWorkerLink){
+    window.open(window._waWorkerLink, '_blank');
+    
+    // Ubah tampilan tombol jadi selesai (abu-abu)
+    btn.innerHTML        = '✅ Notifikasi Pekerja Terkirim!';
+    btn.disabled         = true;
+    btn.style.background = '#9ca3af';
+    
+    // Beri tahu Supervisor bahwa tugasnya sudah beres
+    const hint = document.getElementById('notifHint');
+    if(hint){ 
+      hint.innerHTML = '<span style="color:#059669;font-weight:700">✅ Laporan HSE telah dikirim otomatis via Email, dan Notifikasi Pekerja sudah terkirim via WA! 🎉</span>'; 
+    }
+  } else {
+    showAlert("⚠️ Link WhatsApp Pekerja belum siap.");
+  }
+}
+
+function kirimNotifikasiKeWorker(data){
+  const isApproved = data.sv.status === 'APPROVED';
+  
+  // 🚀 KUNCI PERBAIKAN: Menyisipkan status langsung ke dalam link
+  const st = isApproved ? 'app' : 'rej';
+  const shortUrl   = `${CONFIG.BASE_URL}?id=${data.rowId || 'CHECKLIST'}&mode=view&st=${st}&sv=${encodeURIComponent(data.sv.nama)}&time=${encodeURIComponent(data.sv.time)}`;
+  const workerWA   = data.p.replace(/^0/, '62').replace(/[^0-9]/g, '');
+
+  const workerMsg = isApproved
+    ? `✅ *SAFETY CHECKLIST DISETUJUI*\n\n` +
+      `Halo *${data.n}*,\n\n` +
+      `Checklist safety Anda telah *DISETUJUI* oleh supervisor.\n\n` +
+      `👨‍💼 Supervisor : ${data.sv.nama}\n` +
+      `🕐 Waktu      : ${data.sv.time}\n` +
+      `${data.sv.note ? `📝 Catatan    : ${data.sv.note}\n` : ''}` +
+      `\n✅ Anda diizinkan memulai pekerjaan.\n` +
+      `\n🔗 Detail Laporan:\n${shortUrl}\n\n_Powered by Pausbiru7_`
+    : `❌ *SAFETY CHECKLIST DITOLAK*\n\n` +
+      `Halo *${data.n}*,\n\n` +
+      `Checklist safety Anda *DITOLAK* oleh supervisor.\n\n` +
+      `👨‍💼 Supervisor : ${data.sv.nama}\n` +
+      `📝 Alasan     : ${data.sv.note}\n` +
+      `🕐 Waktu      : ${data.sv.time}\n` +
+      `\n⚠️ Selesaikan perbaikan dan kirim ulang checklist.\n` +
+      `\n🔗 Detail Laporan:\n${shortUrl}\n\n_Powered by Pausbiru7_`;
+
+  const hzText = (data.hz || []).map(h => `• ${h.name}\n  🛡️ ${h.control}`).join('\n');
+  const ctText = (data.ct || []).length > 0 ? data.ct.join(', ') : 'Tidak ada';
+
+  const hseMsg =
+    `📋 *LAPORAN SAFETY CHECKLIST*\n` +
+    `Status: *${isApproved ? '✅ APPROVED' : '❌ REJECTED'}*\n\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `👷 *DATA PEKERJA*\n` +
+    `Nama     : ${data.n}\n` +
+    `ID       : ${data.nid}\n` +
+    `No WA    : ${data.p}\n` +
+    `Jabatan  : ${data.pt}\n` +
+    `Lokasi   : ${data.l}\n` +
+    `Tanggal  : ${data.tgl} | ${data.jam}\n\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `📝 *PEKERJAAN*\n` +
+    `${data.job}\n\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `⚠️ *POTENSI BAHAYA*\n` +
+    `${hzText || 'Tidak ada'}\n\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `🛡️ *APD DIGUNAKAN*\n` +
+    `${ctText}\n\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `👨‍💼 *VERIFIKASI SUPERVISOR*\n` +
+    `Nama     : ${data.sv.nama}\n` +
+    `Status   : ${isApproved ? '✅ DISETUJUI' : '❌ DITOLAK'}\n` +
+    `${data.sv.note ? `Catatan  : ${data.sv.note}\n` : ''}` +
+    `Waktu    : ${data.sv.time}\n\n` +
+    `🔗 Detail Laporan:\n${shortUrl}\n\n_Powered by Pausbiru7_`;
+
+  window._waWorkerLink = `https://wa.me/${workerWA}?text=${encodeURIComponent(workerMsg)}`;
+  window._waHSELink    = `https://wa.me/${CONFIG.HSE_WA}?text=${encodeURIComponent(hseMsg)}`;
+}
+  
+/* ============================================================
+   DONE / RESULT VIEW (BEBAS TOMBOL UNTUK PEKERJA)
+   ============================================================ */
+function showDone(enc, showNotifBtn = false){
+  document.getElementById('WM').style.display = 'none';
+  document.getElementById('SM').style.display = 'none';
+  document.getElementById('SD').style.display = 'block';
+  let data;
+  try{
+    const decoded = LZ.decompress(enc);
+    if(!decoded) throw new Error('Decode failed');
+    data = JSON.parse(decoded);
+  }catch(e){
+    document.getElementById('SD').innerHTML = `
+      <div class="section" style="text-align:center;padding:60px 24px">
+        <div style="font-size:3rem;margin-bottom:16px">❌</div>
+        <h3 style="color:#dc2626">Data Tidak Valid</h3>
+        <p style="color:#6b7280;margin-top:8px">
+          Tidak dapat membaca data checklist.
+        </p>
+        <button class="btn btn-primary" style="margin-top:24px"
+          onclick="location.href='.'">🔄 Kembali ke Beranda</button>
+      </div>`;
+    return;
+  }
+  
+  const hasSV      = !!data.sv;
+  const isApproved = hasSV && data.sv.status === 'APPROVED';
+  const isRejected = hasSV && data.sv.status === 'REJECTED';
+  let statusIcon  = '📨';
+  let statusText  = 'Menunggu Verifikasi';
+  let statusColor = '#2563eb';
+  let infoClass   = '';
+  
+  if(isApproved){
+    statusIcon  = '✅';
+    statusText  = 'DISETUJUI';
+    statusColor = '#059669';
+    infoClass   = 'approved';
+  } else if(isRejected){
+    statusIcon  = '❌';
+    statusText  = 'DITOLAK';
+    statusColor = '#dc2626';
+    infoClass   = 'rejected';
+  }
+
+  // Tombol HANYA akan dirender jika showNotifBtn bernilai TRUE
+  const notifSection = (hasSV && showNotifBtn)
+    ? `<div style="margin-top:20px;text-align:center">
+         <button class="btn btn-wa" onclick="kirimSemuaNotif(this)"
+           style="width:100%">
+           📱 Kirim Notifikasi ke Pekerja
+         </button>
+         <p id="notifHint" style="font-size:.82rem;color:#6b7280;margin-top:8px">
+           Klik tombol di atas untuk mengirim notifikasi bertahap (Pekerja & HSE)
+         </p>
+       </div>`
+    : '';
+
+  document.getElementById('SD').innerHTML = `
+    <!-- 🖨️ HEADER PRINT (Hanya muncul di kertas) -->
+    <div id="printHeader" class="print-only">
+      <div>
+        <h2>⛑️ PAUSBIRU SAFETY</h2>
+        <p>Laporan Daily Pre-Work Checklist</p>
+      </div>
+      <div style="text-align:right;">
+        <p id="printDateTime" style="font-weight:bold; color:#000;"></p>
+        <p>ID: ${escHtml(data.rowId || '-')}</p>
+      </div>
+    </div>
+
+    <!-- TAMPILAN UTAMA -->
+    <div class="section">
+      <div class="result-card">
+        <div class="big">${statusIcon}</div>
+        <h2 style="color:${statusColor};font-size:1.6rem;font-weight:900">
+          ${statusText}
+        </h2>
+      </div>
+      <div class="sbox">${buildSummaryHTML(data)}</div>
+      ${hasSV ? `
+        <div class="sent-info ${infoClass}">
+          <strong>👨‍💼 Supervisor: ${escHtml(data.sv.nama)}</strong><br>
+          Status: <strong>${escHtml(data.sv.status)}</strong><br>
+          ${data.sv.note ? `📝 Catatan: ${escHtml(data.sv.note)}<br>` : ''}
+          🕐 Waktu: ${escHtml(data.sv.time)}
+        </div>` : ''}
+      ${notifSection}
+      
+      <!-- 🚀 TOMBOL PRINT / PDF -->
+      <button class="btn" style="margin-top:24px; width:100%; background:#475569; color:#fff;" onclick="cetakPDF()">
+        🖨️ Cetak / Simpan PDF
+      </button>
+
+      <button class="btn btn-primary" style="margin-top:12px; width:100%;" onclick="location.href='.'">
+        🔄 Kembali ke Beranda
+      </button>
+    </div>
+
+    <!-- 🖨️ FOOTER PRINT (Hanya muncul di kertas) -->
+    <div id="printFooter" class="print-only">
+      <span>Safety Starts With Me © 2026 | Powered by Pausbiru7</span>
+      <span>Dokumen Resmi K3</span>
+    </div>
+  `;
+
+  // Pastikan URL WhatsApp digenerate jika tombol notif menyala
+  if(hasSV && showNotifBtn) {
+    kirimNotifikasiKeWorker(data);
+  }
+}
+
+/* ============================================================
+   NAVIGASI & VALIDASI
+   ============================================================ */
+function next1(){
+  S.n   = sanitize(document.getElementById('nama').value);
+  S.nid = sanitize(document.getElementById('nid').value);
+  S.p   = document.getElementById('telp').value.replace(/[^0-9]/g, '');
+
+  const posisiEl = document.getElementById('posisi');
+  const posisiLainnyaEl = document.getElementById('posisiLainnya');
+
+  if(posisiEl && posisiEl.value === 'LAINNYA'){
+    S.pt = sanitize(posisiLainnyaEl ? posisiLainnyaEl.value : '');
+  } else {
+    S.pt = sanitize(posisiEl ? posisiEl.value : '');
+  }
+
+  const lokasiEl = document.getElementById('lokasiSelect');
+  const lokasiLainnyaEl = document.getElementById('lokasiLainnya');
+
+  if(lokasiEl && lokasiEl.value === 'LAINNYA'){
+    S.l = sanitize(lokasiLainnyaEl ? lokasiLainnyaEl.value : '');
+  } else {
+    S.l = sanitize(lokasiEl ? lokasiEl.value : '');
+  }
+
+  if(!S.n || !S.nid || !S.p || !S.pt || !S.l){
+    showAlert('⚠️ Lengkapi semua field yang bertanda *');
+    return;
+  }
+  
+  if(!/^08[0-9]{8,12}$/.test(S.p)){
+    showAlert('⚠️ Format nomor WA tidak valid.<br>Contoh: 08123456789');
+    return;
+  }
+
+  if(S.spvIdx === null || S.spvIdx === undefined){
+    showAlert('⚠️ Pilih supervisor terlebih dahulu');
+    return;
+  }
+
+  autoSaveDraft();
+  goStep(2);
+}
+
+function next2(){
+  const answered = Object.keys(HC).length;
+  if(answered < 4){
+    showAlert(`⚠️ Jawab semua pertanyaan kesehatan.\n(${answered}/4 terjawab)`);
+    return;
+  }
+  if(Object.values(HC).some(v => v === 'tidak')){
+    showAlert(
+      '⚠️ KONDISI TIDAK MEMENUHI SYARAT KERJA!\n\n' +
+      'Anda menjawab "Tidak" pada salah satu pertanyaan.\n' +
+      'Laporkan ke supervisor sebelum memulai pekerjaan.'
+    );
+    return;
+  }
+  goStep(3);
+}
+
+function next3(){
+  const jobEl = document.getElementById('jobDesc');
+  if(jobEl) S.job = sanitize(jobEl.value);
+
+  if(!S.job){
+    showAlert('⚠️ Isi deskripsi pekerjaan hari ini');
+    return;
+  }
+
+  const totalHZ = Object.values(HZ).filter(h => h.checked).length
+                + customHazards.length;
+  if(totalHZ === 0){
+    showAlert('⚠️ Pilih minimal 1 potensi bahaya');
+    return;
+  }
+
+  const missingStd = Object.values(HZ)
+    .filter(h => h.checked && !h.control.trim()).length;
+  const missingCustom = customHazards
+    .filter(h => !h.control.trim()).length;
+
+  if(missingStd + missingCustom > 0){
+    showAlert(
+      `⚠️ ${missingStd + missingCustom} bahaya belum diisi tindakan kontrolnya.\n` +
+      'Isi semua tindakan kontrol sebelum melanjutkan.'
+    );
+    return;
+  }
+
+  autoSaveDraft();
+  goStep(4);
+}
+
+function next4(){
+  // VALIDASI FOTO HARUS ADA
+  if(!S.photoBase64){
+    showAlert("⚠️ Wajib mengambil foto lapangan / APD sebelum lanjut.");
+    return;
+  }
+  autoSaveDraft();
+  goStep(5);
+  
+  // TRIGGER GPS DAN TANDA TANGAN KETIKA MASUK STEP 5
+  requestGPS();
+  setTimeout(() => initSignaturePad('workerCanvas'), 200);
+}
+
+function goStep(n){
+  if(n === 2) renderStep2();
+  if(n === 3) renderStep3();
+  if(n === 4) renderStep4();
+  if(n === 5) renderStep5();
+
+  curStep = n;
+  document.querySelectorAll('.step').forEach((el, i) => {
+    el.classList.toggle('active', i + 1 === n);
+  });
+  renderDots();
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+function renderDots(){
+  const el = document.getElementById('dots');
+  if(!el) return;
+  let html = '';
+  for(let i = 1; i <= TOTAL_STEPS; i++){
+    html += `<div class="dot ${i === curStep ? 'active' : ''}"></div>`;
+  }
+  el.innerHTML = html;
+}
+
+/* ============================================================
+   BUILD DATA & SUMMARY
+   ============================================================ */
+function buildData(){
+  const hz = [];
+  Object.entries(HZ).forEach(([key, val]) => {
+    if(!val.checked) return;
+    const [catId, idxStr] = key.split('_');
+    const cat = HZDATA.find(c => c.id === catId);
+    if(cat && cat.items[parseInt(idxStr)]){
+      hz.push({ name: cat.items[parseInt(idxStr)], control: val.control.trim() });
+    }
+  });
+  customHazards.forEach(c => {
+    hz.push({ name: c.text, control: c.control.trim() });
+  });
+
+  const ct = [];
+  CTDATA.forEach((item, i) => {
+    if(CT['ct' + i]) ct.push(item);
+  });
+
+  const spv = SUPERVISORS[S.spvIdx] || {};
+
+  return {
+    n        : S.n,
+    nid      : S.nid,
+    p        : S.p,
+    pt       : S.pt,
+    l        : S.l,
+    tgl      : S.tgl,
+    jam      : S.jam,
+    hc       : { ...HC },
+    job      : S.job,
+    hz       : hz,
+    ct       : ct,
+    spvIdx   : S.spvIdx,  
+    spv_name : spv.name   || '',
+    spv_title: spv.title  || '',
+    spv_wa   : spv.wa     || '',
+    spv_dept : spv.dept   || ''
+  };
+}
+
+function buildSummaryHTML(d){
+  const HC_LABELS = {
+    hc1: 'Merasa sehat hari ini',
+    hc2: 'Tidur cukup (min. 6 jam)',
+    hc3: 'Bebas obat-obatan/alkohol',
+    hc4: 'Memahami pekerjaan & risiko'
+  };
+  const hcIcons = Object.entries(d.hc || {})
+    .map(([k,v]) => `${v === 'ya' ? '✅' : '❌'} ${HC_LABELS[k] || k}`)
+    .join('<br>');
+    
+  const hzHTML = (d.hz || []).map(h => `
+    <div style="margin:6px 0;padding:8px;background:#fff;
+      border-radius:8px;border-left:3px solid #ef4444">
+      <span style="color:#dc2626;font-weight:700">⚠️ ${escHtml(h.name)}</span><br>
+      <span style="color:#059669;font-size:.85rem;padding-left:4px">
+        🛡️ ${escHtml(h.control)}
+      </span>
+    </div>`).join('');
+    
+  const ctText = (d.ct || []).length > 0
+    ? d.ct.map(c => escHtml(c)).join(', ')
+    : '<em style="color:#9ca3af">Tidak ada APD dipilih</em>';
+
+ // --- KODE BARU: MENGAMBIL FOTO & TTD (BISA BACA DARI PEKERJA & SUPERVISOR) ---
+  const srcFoto = d.fotoUrl || d.foto || '';
+  const fotoImg = (srcFoto && srcFoto.length > 50) 
+    ? `<img src="${srcFoto}" style="width:100%; max-height:400px; object-fit:contain; border-radius:8px; margin-top:8px; border:2px solid #e5e7eb; background:#f8fafc;">` 
+    : '<em style="color:#9ca3af">Tidak ada foto</em>';
+  
+  const srcTtd = d.ttdUrl || d.ttd || '';
+  const wSign = (srcTtd && srcTtd.length > 50) 
+    ? `<img src="${srcTtd}" style="width:100%; height:80px; object-fit:contain; border-bottom:1px solid #1f2937;">` 
+    : '<em style="color:#9ca3af">Belum TTD</em>';
+  
+  let svSign = '<em style="color:#9ca3af; font-size:0.85rem; margin-top:30px; display:block;">Belum Verifikasi</em>';
+  const spvSignData = (d.sv && d.sv.signUrl) ? d.sv.signUrl : (d.ttdSpvUrl || '');
+  if (spvSignData && spvSignData.length > 50 && spvSignData !== '(TTD SPV Tersimpan)') {
+    svSign = `<img src="${spvSignData}" style="width:100%; height:80px; object-fit:contain; border-bottom:1px solid #1f2937;">`;
+  } else if (d.sv && d.sv.status === 'APPROVED') {
+    svSign = '<em style="color:#059669; font-weight:bold; font-size:0.85rem; display:block; margin-top:20px;">✅ Telah Disetujui</em>';
+  }
+  // ----------------------------------------
+  return `
+    <strong>👤 ${escHtml(d.n)}</strong>
+    &nbsp;|&nbsp; 🪪 ${escHtml(d.nid)}
+    &nbsp;|&nbsp; 📞 ${escHtml(d.p)}<br>
+    <strong>💼 ${escHtml(d.pt)}</strong>
+    &nbsp;|&nbsp; 📍 ${escHtml(d.l)}<br>
+    <strong>📅 ${escHtml(d.tgl)}</strong>
+    &nbsp;|&nbsp; ⏰ ${escHtml(d.jam)}
+    <hr>
+    <strong>❤️ Kesehatan:</strong><br>${hcIcons}<br>
+    <strong>📝 Pekerjaan:</strong> ${escHtml(d.job)}
+    <hr>
+    <strong>⚠️ Potensi Bahaya (${(d.hz || []).length}):</strong>
+    <div style="margin-top:8px">
+      ${hzHTML || '<em style="color:#9ca3af">Tidak ada</em>'}
+    </div>
+    <hr>
+    <strong>🛡️ APD:</strong> ${ctText}
+    <hr>
+    
+    <!-- TAMPILAN FOTO DAN TANDA TANGAN -->
+    <strong>📸 Foto Lapangan:</strong><br>
+    ${fotoImg}
+    <div style="display:flex; justify-content:space-between; margin-top:20px; gap:10px;">
+        <div style="flex:1; text-align:center; background:#fff; padding:10px; border-radius:8px; border:1px solid #e5e7eb;">
+            <p style="font-size:0.75rem; color:#6b7280; margin-bottom:4px; font-weight:bold;">PEKERJA</p>
+            ${wSign}
+            <p style="font-weight:800; font-size:0.9rem; margin-top:4px; color:#1f2937;">${escHtml(d.n)}</p>
+        </div>
+        <div style="flex:1; text-align:center; background:#fff; padding:10px; border-radius:8px; border:1px solid #e5e7eb;">
+            <p style="font-size:0.75rem; color:#6b7280; margin-bottom:4px; font-weight:bold;">SUPERVISOR</p>
+            ${svSign}
+            <p style="font-weight:800; font-size:0.9rem; margin-top:4px; color:#1f2937;">${d.sv ? escHtml(d.sv.nama) : '-'}</p>
+        </div>
+    </div>`;
+}
+
+/* ============================================================
+   SUBMIT CHECKLIST (UPGRADE DENGAN PENANGKAP ERROR)
+   ============================================================ */
+async function submitChecklist(){
+  // AMBIL TANDA TANGAN
+  const workerSign = getSignatureBase64('workerCanvas');
+  if(!workerSign) { showAlert("⚠️ Anda wajib membubuhkan tanda tangan!"); return; }
+
+  const data = buildData();
+
+  // INJEK DATA BARU
+  data.gps = S.gps;
+  data.photoBase64 = S.photoBase64;
+  data.workerSign = workerSign;
+
+  if(!data.n || !data.spv_wa){
+    showAlert('Data tidak lengkap. Kembali dan periksa kembali.');
+    return;
+  }
+
+  showProgress('💾 Menyimpan ke Google Sheets...', 'Mohon tunggu sebentar');
+
+  let rowId = 'LOCAL-' + Date.now();
+
+  try{
+    const res = await postToGAS({ action:'submit', ...data });
+    
+    // 🚀 LOGIKA BARU: TANGKAP ERROR JIKA SERVER GAGAL
+    if(res && res.ok === false) {
+      hideProgress();
+      showAlert("❌ SERVER ERROR:<br>" + (res.error || "Gagal menyimpan data ke Spreadsheet."));
+      return; // STOP DISINI! Jangan buka WhatsApp jika data gagal masuk
+    }
+
+    if(res && res.rowId) rowId = res.rowId;
+    data.rowId = rowId;
+  }catch(e){
+    console.warn('GAS submit failed, offline mode:', e.message);
+    data.rowId = rowId;
+    saveToQueue(data);
+  }
+
+  const vUrl = `${CONFIG.BASE_URL}?id=${data.rowId}`;
+
+  try{
+    await postToGAS({
+      action: 'updateVerifyLink',
+      rowId: data.rowId,
+      verifyLink: vUrl
+    });
+  }catch(e){
+    console.warn('Update verifyLink gagal:', e.message);
+  }
+
+  hideProgress();
+
+  /* Buat pesan WA supervisor */
+  const hzText = data.hz.map(h => `• ${h.name}\n  🛡️ ${h.control}`).join('\n');
+  const ctText = data.ct.length > 0 ? data.ct.join(', ') : 'Tidak ada';
+
+  const msg =
+    `🔔 *SAFETY CHECKLIST - MOHON VERIFIKASI*\n\n` +
+    `👷 Nama     : ${data.n}\n` +
+    `🪪 ID       : ${data.nid}\n` +
+    `📞 WA       : ${data.p}\n` +
+    `💼 Jabatan  : ${data.pt}\n` +
+    `📍 Lokasi   : ${data.l}\n` +
+    `📅 Tanggal  : ${data.tgl} | ⏰ ${data.jam}\n\n` +
+    `📝 *Pekerjaan:*\n${data.job}\n\n` +
+    `⚠️ *Potensi Bahaya:*\n${hzText}\n\n` +
+    `🛡️ *APD:* ${ctText}\n\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `✅ *Klik link berikut untuk VERIFIKASI & CEK FOTO:*\n${vUrl}\n\n` +
+    `_Powered by Pausbiru7_`;
+
+  localStorage.removeItem('safetyDraft');
+
+  /* Buka WA supervisor */
+  const spvWA  = data.spv_wa.replace(/^0/, '62').replace(/[^0-9]/g, '');
+  const waLink = `https://wa.me/${spvWA}?text=${encodeURIComponent(msg)}`;
+
+  window._waSPVLink = waLink;
+  window.open(waLink, '_blank');
+
+  renderStep6(rowId, data.spv_name);
+  goStep(6);
+}
+
+/* ============================================================
+   DRAFT — AUTO SAVE & LOAD
+   ============================================================ */
+function autoSaveDraft(){
+  try{
+    const draft = {
+      S             : { ...S },
+      HC            : { ...HC },
+      HZ            : { ...HZ },
+      CT            : { ...CT },
+      customHazards : [...customHazards]
+    };
+    localStorage.setItem('safetyDraft', LZ.compress(JSON.stringify(draft)));
+  }catch(e){
+    console.warn('Draft save failed:', e.message);
+  }
+}
+
+function loadDraft(){
+  try{
+    const raw = localStorage.getItem('safetyDraft');
+    if(!raw) return;
+
+    const decoded = LZ.decompress(raw);
+    if(!decoded) return;
+
+    const draft = JSON.parse(decoded);
+
+    if(draft.S)             Object.assign(S, draft.S);
+    if(draft.HC)            Object.assign(HC, draft.HC);
+    if(draft.HZ)            Object.assign(HZ, draft.HZ);
+    if(draft.CT)            Object.assign(CT, draft.CT);
+    if(draft.customHazards) customHazards = draft.customHazards;
+
+  }catch(e){
+    console.warn('Draft load failed, clearing:', e.message);
+    localStorage.removeItem('safetyDraft');
+  }
+}
+
+/* ============================================================
+   UTILITY FUNCTIONS
+   ============================================================ */
+function formatIDDateTime(d = new Date()) {
+  const dd = String(d.getDate()).padStart(2, "0");
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const yyyy = d.getFullYear();
+  const hh = String(d.getHours()).padStart(2, "0");
+  const mi = String(d.getMinutes()).padStart(2, "0");
+  return `${dd}/${mm}/${yyyy} ${hh}:${mi}`;
+}
+/* Sanitasi input — cegah XSS */
+function sanitize(str){
+  if(typeof str !== 'string') return '';
+  return str
+    .replace(/[<>&"'`]/g, '')
+    .trim()
+    .substring(0, 200);
+}
+
+/* Escape HTML untuk display */
+function escHtml(str){
+  if(typeof str !== 'string') return '';
+  return str
+    .replace(/&/g,  '&amp;')
+    .replace(/</g,  '&lt;')
+    .replace(/>/g,  '&gt;')
+    .replace(/"/g,  '&quot;')
+    .replace(/'/g,  '&#39;');
+}
+
+/* Custom alert — lebih baik dari native alert() */
+function showAlert(msg){
+  let alertEl = document.getElementById('globalAlert');
+  if(!alertEl){
+    document.body.insertAdjacentHTML('beforeend', `
+      <div id="globalAlert" style="
+        display      : none;
+        position     : fixed;
+        top          : 20px;
+        left         : 50%;
+        transform    : translateX(-50%);
+        background   : #fff;
+        border       : 2px solid #ef4444;
+        border-radius: 16px;
+        padding      : 20px 24px;
+        max-width    : 340px;
+        width        : 90%;
+        z-index      : 9999;
+        box-shadow   : 0 20px 60px rgba(0,0,0,.25);
+        text-align   : center;
+        font-size    : .92rem;
+        color        : #1f2937;
+        line-height  : 1.6">
+        <div style="font-size:2rem;margin-bottom:8px">⚠️</div>
+        <div id="globalAlertMsg"></div>
+        <button onclick="closeAlert()" style="
+          margin-top   : 16px;
+          background   : #ef4444;
+          color        : #fff;
+          border       : none;
+          border-radius: 10px;
+          padding      : 10px 28px;
+          font-weight  : 700;
+          font-size    : .9rem;
+          cursor       : pointer;
+          width        : 100%">
+          OK, Mengerti
+        </button>
+      </div>`);
+    alertEl = document.getElementById('globalAlert');
+  }
+
+  document.getElementById('globalAlertMsg').innerHTML =
+    msg.replace(/\n/g, '<br>');
+  alertEl.style.display = 'block';
+}
+
+function closeAlert(){
+  const el = document.getElementById('globalAlert');
+  if(el) el.style.display = 'none';
+}
+
+/* Reset app untuk checklist baru */
+function resetApp(){
+  Object.keys(S).forEach(k => { S[k] = k === 'spvIdx' ? null : ''; });
+  Object.keys(HC).forEach(k => delete HC[k]);
+  Object.keys(HZ).forEach(k => delete HZ[k]);
+  Object.keys(CT).forEach(k => delete CT[k]);
+  customHazards = [];
+  localStorage.removeItem('safetyDraft');
+  location.href = '.';
+}
+
+/* Fungsi Pengecekan PIN Supervisor */
+function checkSupervisorPin(inputVal) {
+  const btnApprove = document.querySelector('.btn-approve');
+  if(!btnApprove) return;
+  
+  if(inputVal.trim() === "7788") {
+    btnApprove.disabled = false;
+    btnApprove.style.opacity = "1";
+    btnApprove.style.cursor = "pointer";
+  } else {
+    btnApprove.disabled = true;
+    btnApprove.style.opacity = "0.5";
+    btnApprove.style.cursor = "not-allowed";
+  }
+}
+
+/* ============================================================
+   FUNGSI CETAK PDF (AUTO-DATE)
+   ============================================================ */
+function cetakPDF() {
+  const d = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+  
+  const dateTimeEl = document.getElementById('printDateTime');
+  if(dateTimeEl) {
+     dateTimeEl.textContent = 'Dicetak: ' + d.toLocaleDateString('id-ID', options);
+  }
+  window.print();
+}
+
+/* ============================================================
+   JALANKAN APP
+   ============================================================ */
+init();
+processQueue();
+</script>
+</body>
+</html>
